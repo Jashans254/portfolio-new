@@ -21,7 +21,7 @@ export const achievements: Achievement[] = [
     icon: "🧩",
     category: "coding",
     metric: "250+",
-    link: "https://leetcode.com/",
+    link: "https://leetcode.com/u/jashanps_254",
   },
   {
     id: "hackathon",

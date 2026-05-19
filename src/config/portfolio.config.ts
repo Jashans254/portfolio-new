@@ -31,7 +31,7 @@ export const portfolioConfig = {
     tagline: "Full Stack Engineer & AI Builder",
     bio: "Final-year B.Tech CSE student with a strong foundation in Data Structures, Algorithms, and OOP. Skilled in C++, JavaScript, and Full-Stack Development. Seeking a Software Engineering role to build scalable solutions and contribute to innovative projects.",
     avatar: "/avatar.jpg",
-    resumeUrl: "/Jashanpreet_Singh_Resume.pdf",
+    resumeUrl: "/JashanpreetSingh_Resume.pdf",
   },
 
   // --- Social Links ---
@@ -40,7 +40,7 @@ export const portfolioConfig = {
     linkedin: "https://linkedin.com/in/jashanpreet-singh-819077251",
     email: "mailto:jashanps254@gmail.com",
     twitter: "",
-    leetcode: "https://leetcode.com/",
+    leetcode: "https://leetcode.com/u/jashanps_254",
   },
 
   // --- Theme ---

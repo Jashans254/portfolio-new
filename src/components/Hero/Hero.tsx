@@ -15,11 +15,13 @@ import {
   floatAnimation,
   viewportOnce,
 } from "@/lib/animations";
+import { Mail, Download, ArrowRight } from "lucide-react";
+import { FiGithub, FiLinkedin } from "react-icons/fi";
 
 const SOCIALS = [
-  { label: "GitHub", href: portfolioConfig.socials.github, icon: "GH" },
-  { label: "LinkedIn", href: portfolioConfig.socials.linkedin, icon: "LI" },
-  { label: "Email", href: portfolioConfig.socials.email, icon: "@" },
+  { label: "GitHub", href: portfolioConfig.socials.github, icon: <FiGithub size={18} /> },
+  { label: "LinkedIn", href: portfolioConfig.socials.linkedin, icon: <FiLinkedin size={18} /> },
+  { label: "Email", href: portfolioConfig.socials.email, icon: <Mail size={18} /> },
 ];
 
 export default function Hero() {
@@ -98,14 +100,15 @@ export default function Hero() {
 
           {/* CTAs */}
           <motion.div variants={fadeInUp} className="flex flex-wrap gap-4 mb-14">
-            <GlowButton href="#projects" variant="primary" icon={<span>→</span>}>
+            <GlowButton href="#projects" variant="primary" icon={<ArrowRight size={16} />}>
               View Projects
             </GlowButton>
             <GlowButton
               href={portfolioConfig.author.resumeUrl}
               target="_blank"
+              download
               variant="outline"
-              icon={<span>↓</span>}
+              icon={<Download size={16} />}
             >
               Download Resume
             </GlowButton>

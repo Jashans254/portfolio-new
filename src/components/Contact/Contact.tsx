@@ -11,25 +11,27 @@ import SectionHeading from "@/components/Shared/SectionHeading";
 import GlowButton from "@/components/Shared/GlowButton";
 import { portfolioConfig } from "@/config/portfolio.config";
 import { staggerContainer, fadeInLeft, fadeInRight, viewportOnce } from "@/lib/animations";
+import { Mail, CheckCircle, Send, ArrowRight } from "lucide-react";
+import { FiGithub, FiLinkedin } from "react-icons/fi";
 
 const SOCIALS = [
   {
     label: "Email",
     value: portfolioConfig.author.email,
     href: portfolioConfig.socials.email,
-    icon: "✉",
+    icon: <Mail size={24} />,
   },
   {
     label: "GitHub",
     value: "github.com/Jashans254",
     href: portfolioConfig.socials.github,
-    icon: "◆",
+    icon: <FiGithub size={24} />,
   },
   {
     label: "LinkedIn",
     value: "linkedin.com/in/jashanpreet-singh",
     href: portfolioConfig.socials.linkedin,
-    icon: "◈",
+    icon: <FiLinkedin size={24} />,
   },
 ];
 
@@ -44,22 +46,15 @@ export default function Contact() {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   };
 
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   setStatus("sending");
-  //   // Replace with your form submission logic (e.g., Resend, Formspree, EmailJS)
-      
-  //   await new Promise((r) => setTimeout(r, 1200));
-  //   setStatus("sent");
-  // };
-    const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
-    
+
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch(process.env.NEXT_PUBLIC_FORMSPREE_URL || "", {
         method: 'POST',
         headers: {
+          'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(form),
@@ -96,7 +91,7 @@ export default function Contact() {
         >
           {status === "sent" ? (
             <div className="card-glass glow-border rounded-2xl p-10 text-center">
-              <p className="text-4xl mb-4">✓</p>
+              <CheckCircle className="w-12 h-12 mx-auto mb-4 text-[var(--color-accent)]" />
               <h3 className="font-display font-bold text-xl text-[var(--color-accent)] mb-2">
                 Message sent!
               </h3>
@@ -141,7 +136,7 @@ export default function Contact() {
                 className="w-full justify-center"
                 disabled={status === "sending"}
               >
-                {status === "sending" ? "Sending..." : "Send Message →"}
+                {status === "sending" ? "Sending..." : <span className="flex items-center gap-2">Send Message <Send size={16} /></span>}
               </GlowButton>
             </form>
           )}
@@ -175,7 +170,7 @@ export default function Contact() {
                 </p>
               </div>
               <span className="ml-auto text-[var(--color-text-muted)] group-hover:text-[var(--color-accent)] transition-colors">
-                →
+                <ArrowRight size={18} />
               </span>
             </motion.a>
           ))}
